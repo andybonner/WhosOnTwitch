@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Twitch channel status</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css'>
+
+  <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body>
+
+  <body>
+    <div class="container">
+      <div id="header">
+        <h3 class="headText">
+          Who's on&nbsp;
+        </h3>
+        <a href="https://www.twitch.tv/" target="_blank">
+        <!-- Twitch's logo in svg -->
+        <svg class="svg-logo_twitch" role="img" version="1.1" viewBox="0 0 94 32" width="94px" x="0px" y="0px">
+          <title>Twitch</title>
+          <desc>Main Page</desc>
+          <path clip-rule="evenodd" d="M88,5h-6V0h-9l-6,5h-5.5L59,7.5V5h-5V0H36v5H16l-5-5H0v22l5,5.25L14,32h6v-1.5l3,1.5h12l2-3l1,3h7v-3l3,3h8l0.5-3l2.5,3h10l3-3v3h4l3-3v3h7l7-6V10L88,5z M13,13H8v6h5v6H6l-4-4V2h6v5h5V13z M36,21.5L32.5,25H15V7h6v12h2V7h6v12h2V7h5V21.5z M44,25h-6V7h6V25z M44,5h-6V2h6V5z M57,13h-5v6h5v6h-7l-4-4V2h6v5h5V13z M72,13h-7v6h7v6h-9l-4-4V11l4-4h9V13z M91,25h-6V13h-5v12h-6V2h6v5h7l4,4V25z" fill-rule="evenodd"></path>
+        </svg>
+      </a>
+        <h3 class="headText">
+          ?
+        </h3>
+      </div>
+
+      <div id="searchBox" class="input-field">
+        <form>
+          <i class="material-icons prefix">search</i>
+          <input id="search" type="text" autocomplete="off">
+          <label for="search">Find and add channels</label>
+        </form>
+      </div>
+
+      <!-- The following modal starts off hidden, and is opened on search     -->
+      <div id="searchModal" class="modal">
+        <div class="modal-content">
+          <h5>Click to add channels to the list. Close this box to refresh.</h5>
+          <div class="row">
+            <div class="col s1"></div>
+            <div class="col s2">(Channel name)</div>
+            <div class="col s9">(Topic category)</div>
+          </div>
+          <div id="searchResults"></div>
+        </div>
+        <div class="modal-footer">
+          <a href="#!" class="modal-action modal-close btn-flat">OK</a>
+        </div>
+      </div>
+
+      <div id="chipList">
+        <!-- container div for chips -->
+      </div>
+      <div>
+        <a id="reset" class="waves-effect waves-light btn">reset list to default</a>
+      </div>
+    </div>
+  </body>
+  <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js'></script>
+
+  <script src="js/index.js"></script>
+
+</body>
+
+</html>

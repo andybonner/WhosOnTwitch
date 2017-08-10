@@ -1,0 +1,74 @@
+body {
+  background-color: #F1F1F1;
+}
+
+#header {
+  margin-top: 10px;
+}
+
+.svg-logo_twitch {
+  fill: #6441A5;
+  display: inline-block;
+  height: 2.5em;
+}
+
+.headText {
+  display: inline-block;
+}
+
+h3 {
+  color: #6441A5;
+}
+
+.input-field input[type=text]:focus + label {
+  color: #6441A5;
+}
+
+.input-field input[type=text]:focus {
+  border-bottom: 1px solid #6441A5;
+  box-shadow: 0 1px 0 0 #6441A5;
+}
+
+.input-field .prefix {
+ color: #262626;
+}
+
+.input-field .prefix.active {
+ color: #6441A5;
+}
+
+.modal {
+  background-color: #F1F1F1;
+  color: #6441A5;
+}
+
+.container .row {
+  margin-left: 0 !important;
+}
+
+.chip {
+  background-color: #262626;
+  color: #B9A3E3;
+  width: 100%;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+a {
+  color: #B9A3E3
+}
+
+.offline {
+  font-style: italic;
+}
+
+.btn {
+  width: 100%;
+}
+
+.waves-effect {
+  background-color: #6441A5;
+}
+
+.waves-effect:hover {
+  background-color: #B9A3E3;
+}
