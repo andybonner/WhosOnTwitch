@@ -1,5 +1,3 @@
-// to do: refactor using fragments to load the lists
-
 // first, check to see whether localStorage even exists, and alert if not. Next, check to see if it holds data from a previous visit, and use that, splitting it back into an array because it saves as a string. Finally, if localStorage.nameList is empty, declare nameList; we'll save it to localStorage later if changes are made to it.
 if (!window.localStorage) {
   alert("Sorry, we can't store your data locally. Changes to your channel list will be lost when you exit.");
@@ -18,7 +16,7 @@ function buildList() {
     headers: {
       "Client-ID": "r0a4q2vzw4htcq5h9hl5sl6r4ykk6vw"
     },
-    success: function(data) {
+    success: function (data) {
       $("#chipList").html(""); //clear out contents from previous call
       for (var i = 0; i < data.streams.length; i++) {
         $("#chipList").append("<div class='chip row hoverable'> <a href='" + data.streams[i].channel.url + "' target='_blank'> <div class='col s1 logo'> <img src='" + data.streams[i].channel.logo + "'> </div><div class='col s2 truncate'>" + data.streams[i].channel.display_name + "</div><div class='col s8 truncate'>Online: " + data.streams[i].channel.status + "</div></a><div class='col s1'> <i id='" + data.streams[i].channel.display_name + "' class='close material-icons'>close</i> </div></div>");
@@ -35,17 +33,17 @@ function buildList() {
               'Client-ID': 'r0a4q2vzw4htcq5h9hl5sl6r4ykk6vw'
             },
             dataType: "json",
-            success: function(data) {
+            success: function (data) {
               $("#chipList").append("<div class='chip row hoverable'><a href='" + data.url + "' target='_blank'><div class='col s1 logo'> <img src='" + data.logo + "'> </div><div class='col s2 truncate'>" + data.display_name + "</div><div class='col s8 truncate offline'>Offline: " + data.status + "</div></a><div class='col s1'> <i id='" + data.display_name + "' class='close material-icons'>close</i></div></div>");
             },
-            error: function(jqXHR, textStatus, errorThrown) {
+            error: function (jqXHR, textStatus, errorThrown) {
               $("#chipList").append("<div class='chip row hoverable'><a href='https://www.twitch.tv/' target='_blank'><div class='col s1 logo'> <img src='//static-cdn.jtvnw.net/jtv_user_pictures/xarth/404_user_150x150.png'></div><div class='col s2 truncate'>" + errorThrown + "</div><div class='col s8 truncate offline'>Error: " + jqXHR.responseJSON.message + "</div></a><div class='col s1'> <i id='" + nameList[i] + "' class='close material-icons'>close</i></div></div>");
             }
           });
         }
       }
     },
-    error: function() {
+    error: function () {
       alert("Error, please try again");
     }
 
@@ -53,7 +51,7 @@ function buildList() {
 }
 
 // A function to search for channels:
-$("#searchBox").submit(function(event) {
+$("#searchBox").submit(function (event) {
   event.preventDefault();
   $.ajax({
     url: "https://api.twitch.tv/kraken/search/channels?q=" + $("#search").val(),
@@ -62,7 +60,7 @@ $("#searchBox").submit(function(event) {
     headers: {
       "Client-ID": "r0a4q2vzw4htcq5h9hl5sl6r4ykk6vw"
     },
-    success: function(data) {
+    success: function (data) {
       $("#searchResults").html(""); //clear out any results from previous searches
       for (var i = 0; i < data.channels.length; i++) {
         if (data.channels[i].logo === null) { //Some Twitch users never set a profile pic. Replace with the default one that Twitch uses.
@@ -85,7 +83,7 @@ $("#searchBox").submit(function(event) {
 })
 
 // A function to update the nameList array when a search result is clicked:
-$("#searchResults").on("click", ".result", function(event) {
+$("#searchResults").on("click", ".result", function (event) {
   event.preventDefault(); //Don't open the link!
   $(this).hide();
   nameList.push(this.lastChild.lastChild.id); //You're clicking the chip (.result). The ID is on the <i>, inside the last <div>.
@@ -93,13 +91,13 @@ $("#searchResults").on("click", ".result", function(event) {
 });
 
 // To remove IDs from nameList when someone clicks their close button:
-$('#chipList').on('click', ".close", function() {
+$('#chipList').on('click', ".close", function () {
   nameList.splice(nameList.indexOf(this.id), 1);
   localStorage.nameList = nameList;
 });
 
 // To restore the starting contents of the list:
-$("#reset").click(function() {
+$("#reset").click(function () {
   nameList = ["OgamingSC2", "FreeCodeCamp", "ESL_SC2", "ThatMadProgrammer", "codingrainbow", "Programming"];
   localStorage.nameList = nameList;
   buildList();
